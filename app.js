@@ -1,243 +1,263 @@
-const USERS = [
-    {name: "Вера", age: 4, key: "vera"},
-    {name: "Матвей", age: 7, key: "matvey"},
-    {name: "Никита", age: 12, key: "nikita"}
-];
-const USER_STYLES = {
-    "Вера":"vera",
-    "Матвей":"matvey",
-    "Никита":"nikita"
-};
-const TODAY = new Date();
-const IS_SUMMER = (TODAY.getMonth() === 5 || TODAY.getMonth() === 6 || TODAY.getMonth() === 7);
-// === Вопросы ===
-const QUESTIONS_SET = {
-    "Вера": [
-        {
-            label: "Как ты себя чувствуешь?",
-            key: "feel",
-            type: "emoji",
-            options: [
-                {emoji:"😊", text:"Весело!"},
-                {emoji:"😴", text:"Сонно"},
-                {emoji:"😕", text:"Грустно"}
-            ],
-            bg: "linear-gradient(120deg,#fffde7 50%, #f8bbd0 100%)",
-            icon: "🌞"
-        },
-        {
-            label: "Что тебе сегодня приснилось?",
-            key: "dream",
-            type: "emoji",
-            options: [
-                {emoji:"🦄", text:"Волшебство"},
-                {emoji:"🐱", text:"Животные"},
-                {emoji:"🙈", text:"Не помню"}
-            ],
-            bg: "linear-gradient(120deg,#e1f5fe 50%, #ede7f6 100%)",
-            icon: "💤"
-        },
-        {
-            label: "Что бы ты хотела сегодня сделать?",
-            key: "goal",
-            type: "emoji",
-            options: [
-                {emoji:"🎨", text:"Рисовать"},
-                {emoji:"🤸", text:"Играть"},
-                {emoji:"📚", text:"Слушать сказку"}
-            ],
-            bg: "linear-gradient(120deg,#fcebb6 50%, #f8bbd0 100%)",
-            icon: "🌈"
-        }
-    ],
-    "Матвей": [
-        {
-            label: "Как ты себя чувствуешь?",
-            key: "feel",
-            type: "emoji",
-            options: [
-                {emoji:"😃", text:"Классно"},
-                {emoji:"🙂", text:"Хорошо"},
-                {emoji:"😕", text:"Не очень"}
-            ],
-            bg: "linear-gradient(120deg,#e3f5fe 50%, #b3e5fc 100%)",
-            icon: "☀️"
-        },
-        {
-            label: "Что тебе снилось?",
-            key: "dream",
-            type: "emoji",
-            options: [
-                {emoji:"🚗", text:"Машины"},
-                {emoji:"🦸", text:"Герои"},
-                {emoji:"😴", text:"Не помню"}
-            ],
-            bg: "linear-gradient(120deg,#fff8e1 50%, #b3e5fc 100%)",
-            icon: "💤"
-        },
-        {
-            label: "Что бы ты хотел узнать сегодня?",
-            key: "learn",
-            type: "emoji",
-            options: [
-                {emoji:"🌍", text:"Про мир"},
-                {emoji:"🦕", text:"Про животных"},
-                {emoji:"🤔", text:"Что-то новое"}
-            ],
-            bg: "linear-gradient(120deg,#e1f5fe 50%, #ffe0b2 100%)",
-            icon: "🔍"
-        },
-        {
-            label: "Чем поможешь дома сегодня?",
-            key: "help",
-            type: "emoji",
-            options: [
-                {emoji:"🥣", text:"Накрою на стол"},
-                {emoji:"🧹", text:"Уберу игрушки"},
-                {emoji:"😊", text:"Помогу маме"}
-            ],
-            bg: "linear-gradient(120deg,#c8e6c9 50%, #b3e5fc 100%)",
-            icon: "🌱"
-        },
-        {
-            label: IS_SUMMER ?
-                "Что ты сегодня будешь читать?" :
-                "Что ты сегодня почитаешь?",
-            key: "read",
-            type: "emoji",
-            options: [
-                {emoji:"📚", text:"Книгу"},
-                {emoji:"📖", text:"Библию"},
-                {emoji:"📰", text:"Журнал"}
-            ],
-            bg: "linear-gradient(120deg,#fffde7 50%, #b3e5fc 100%)",
-            icon: "📚"
-        }
-    ],
-    "Никита": [
-        {
-            label: "Какое у тебя настроение?",
-            key: "feel",
-            type: "emoji",
-            options: [
-                {emoji:"😎", text:"Супер!"},
-                {emoji:"🙂", text:"Хорошее"},
-                {emoji:"😶", text:"Скучно"},
-                {emoji:"😩", text:"Нет сил"}
-            ],
-            bg: "linear-gradient(120deg,#ffcdd2 60%, #e57373 100%)",
-            icon: "🔥"
-        },
-        {
-            label: "Что тебе сегодня снилось?",
-            key: "dream",
-            type: "emoji",
-            options: [
-                {emoji:"🌈", text:"Крутой сон"},
-                {emoji:"🚀", text:"Были приключения"},
-                {emoji:"🙈", text:"Не запомнил"}
-            ],
-            bg: "linear-gradient(120deg,#e1f5fe 50%, #e57373 100%)",
-            icon: "🛌"
-        },
-        {
-            label: "Какая твоя главная задача на день?",
-            key: "goal",
-            type: "emoji",
-            options: [
-                {emoji:"📖", text:"Учёба"},
-                {emoji:"🏆", text:"Спорт"},
-                {emoji:"🆕", text:"Научиться новому"}
-            ],
-            bg: "linear-gradient(120deg, #ffebee 60%, #fbc02d 100%)",
-            icon: "🏆"
-        },
-        {
-            label: "Что бы ты хотел создать/придумать сегодня?",
-            key: "create",
-            type: "emoji",
-            options: [
-                {emoji:"🤖", text:"Робота/игру"},
-                {emoji:"🎧", text:"Плейлист"},
-                {emoji:"🎲", text:"Настолку"}
-            ],
-            bg: "linear-gradient(120deg, #e8eaf6, #ffcdd2 100%)",
-            icon: "💡"
-        },
-        {
-            label: "Какая привычка/рутина будет сегодня?",
-            key: "habit",
-            type: "emoji",
-            options: [
-                {emoji:"⚡️", text:"Зарядка"},
-                {emoji:"🚰", text:"Пить воду"},
-                {emoji:"📖", text:"Читать каждый день"}
-            ],
-            bg: "linear-gradient(120deg, #ffe0b2, #e57373 100%)",
-            icon: "🔋"
-        },
-        {
-            label: IS_SUMMER ?
-                "Что хочешь прочитать летом?" :
-                "Что будешь читать сегодня?",
-            key: "read",
-            type: "emoji",
-            options: [
-                {emoji:"📖", text:"Приключения"},
-                {emoji:"📚", text:"Библию"},
-                {emoji:"📰", text:"Интересное в интернете"}
-            ],
-            bg: "linear-gradient(120deg,#e1f5fe,#ffcdd2 100%)",
-            icon: "📖"
-        },
-        {
-            label: IS_SUMMER
-                ? "Сколько минут сегодня не трогаешь телефон?"
-                : "Сколько часов без телефона до 18:00?",
-            key: "phone",
-            type: "emoji",
-            options: [
-                {emoji:"⏳", text:"> 2 часа"},
-                {emoji:"⌛️", text:"1 час"},
-                {emoji:"🤏", text:"Маленько"}
-            ],
-            bg: "linear-gradient(120deg,#bbded6,#ffcdd2 100%)",
-            icon: "📵"
-        },
-        {
-            label: IS_SUMMER
-                ? "Что записал в тетрадь или Библию сегодня?"
-                : "Что запишешь в дневник?",
-            key: "journal",
-            type: "emoji",
-            options: [
-                {emoji:"📝", text:"Домашка/идеи"},
-                {emoji:"📅", text:"Планы"},
-                {emoji:"🙏", text:"Стих или мысль из Библии"}
-            ],
-            bg: "linear-gradient(120deg, #e3f2fd, #ffcdd2 100%)",
-            icon: "📓"
-        },
-        {
-            label: "Как подумаешь сегодня о Боге?",
-            key: "bible",
-            type: "emoji",
-            options: [
-                {emoji:"📖", text:"Почитаю Библию"},
-                {emoji:"🤲", text:"Помолюсь утром"},
-                {emoji:"❤️", text:"Сделаю что-то доброе"}
-            ],
-            bg: "linear-gradient(120deg,#fff3e0,#e1bee7 100%)",
-            icon: "🙌"
-        }
-    ]
-};
-// ======= Хранилище и функции =======
-const app = document.getElementById('app');
-let currentUser = null;
-let answers = {};
-let step = 0;
-let QUESTIONS = [];
+const USERS = [  
+    {name: "Вера", age: 4, key: "vera"},  
+    {name: "Матвей", age: 7, key: "matvey"},  
+    {name: "Никита", age: 12, key: "nikita"}  
+];  
+const USER_STYLES = {  
+    "Вера":"vera",  
+    "Матвей":"matvey",  
+    "Никита":"nikita"  
+};  
+const TODAY = new Date();  
+const IS_SUMMER = (TODAY.getMonth() === 5 || TODAY.getMonth() === 6 || TODAY.getMonth() === 7);  
+
+function shuffle(array) {  
+  let arr = array.slice();  
+  for (let i = arr.length - 1; i > 0; i--) {  
+    const j = Math.floor(Math.random() * (i + 1));  
+    [arr[i], arr[j]] = [arr[j], arr[i]];  
+  }  
+  return arr;  
+}  
+
+// Дополнительные мотивационные вопросы для Никиты с возможностью "свой вариант"  
+function getNikitaQuestions() {  
+    let base = [  
+        {  
+            label: "Кем хочешь стать через год?",  
+            key: "future",  
+            type: "emoji+input",  
+            options: [  
+                {emoji:"👨‍🔬", text:"Стать умнее"},  
+                {emoji:"🏆", text:"Лучше в спорте"},  
+                {emoji:"🧑‍🎨", text:"Развивать таланты"},  
+                {emoji:"❤️", text:"Сильнее в вере и семье"},  
+                {emoji:"✍️", text:"Свой вариант"}  
+            ],  
+            bg: "linear-gradient(120deg,#ffcdd2 60%, #fbc02d 100%)", icon: "🎯"  
+        },  
+        {  
+            label: "Как бы поступил Иисус в твоей трудной ситуации?",  
+            key: "jesus",  
+            type: "emoji+input",  
+            options: [  
+                {emoji:"🤝", text:"Проявил доброту"},  
+                {emoji:"🙏", text:"Помолился"},  
+                {emoji:"🤲", text:"Помог другому"},  
+                {emoji:"😌", text:"Простил"},  
+                {emoji:"✍️", text:"Свой вариант"}  
+            ],  
+            bg: "linear-gradient(120deg,#ece9f7,#ffcdd2 100%)", icon: "✝️"  
+        },  
+        {  
+            label: "Что держит тебя ближе к Богу?",  
+            key: "bibleclose",  
+            type: "emoji+input",  
+            options: [  
+                {emoji:"📖", text:"Читаю Библию"},  
+                {emoji:"🙏", text:"Молюсь"},  
+                {emoji:"❤️", text:"Стараюсь делать добро"},  
+                {emoji:"👪", text:"Семейные разговоры"},  
+                {emoji:"✍️", text:"Свой вариант"}  
+            ],  
+            bg: "linear-gradient(120deg,#fffde7, #e1bee7 100%)", icon: "🙌"  
+        },  
+        {  
+            label: "Что вдохновляет не тратить время на телефон?",  
+            key: "notPhone",  
+            type: "emoji+input",  
+            options: [  
+                {emoji:"📗", text:"Книга интереснее"},  
+                {emoji:"🏃", text:"Тренировка"},  
+                {emoji:"😃", text:"Общение с семьёй"},  
+                {emoji:"💡", text:"Стать лучше"},  
+                {emoji:"✍️", text:"Свой вариант"}  
+            ],  
+            bg: "linear-gradient(120deg,#c1c8e4,#f9f9f9 100%)", icon: "📵"  
+        },  
+        {  
+            label: "Что бы ты хотел сделать важного для семьи?",  
+            key: "family",  
+            type: "emoji+input",  
+            options: [  
+                {emoji:"🥗", text:"Приготовить или помочь"},  
+                {emoji:"🧹", text:"Убраться"},  
+                {emoji:"🎁", text:"Порадовать родных"},  
+                {emoji:"💬", text:"Поговорить с родителями"},  
+                {emoji:"✍️", text:"Свой вариант"}  
+            ],  
+            bg: "linear-gradient(120deg, #ffe0b2, #ffb6b9 100%)", icon: "👪"  
+        },  
+        {  
+            label: "Когда ты сегодня займёшься уроками?",  
+            key: "study",  
+            type: "emoji+input",  
+            options: [  
+                {emoji:"⏲", text:"Сразу после школы"},  
+                {emoji:"🌅", text:"После обеда"},  
+                {emoji:"🌙", text:"Перед сном (не лучший вариант)"},  
+                {emoji:"🔄", text:"Когда напомнят"},  
+                {emoji:"✍️", text:"Свой вариант"}  
+            ],  
+            bg: "linear-gradient(120deg, #e3f2fd, #ffe0b2 100%)", icon: "📚"  
+        },  
+        {  
+            label: IS_SUMMER ? "Что будешь читать этим летом?" : "Что прочитаешь сегодня?",  
+            key: "read",  
+            type: "emoji+input",  
+            options: [  
+                {emoji:"📖", text:"Приключения"},  
+                {emoji:"📚", text:"Библию"},  
+                {emoji:"📰", text:"Интересное"},  
+                {emoji:"✍️", text:"Свой вариант"}  
+            ],  
+            bg: "linear-gradient(120deg,#e1f5fe,#ffcdd2 100%)", icon: "📖"  
+        },  
+        {  
+            label: "Что бы ты записал (ДЗ, мысль, планы) в дневник или тетрадь?",  
+            key: "journal",  
+            type: "emoji+input",  
+            options: [  
+                {emoji:"📝", text:"Домашка"},  
+                {emoji:"✍️", text:"Мысли/планы"},  
+                {emoji:"📖", text:"Стих или идея из Библии"},  
+                {emoji:"🤔", text:"Вопрос родителям"},  
+                {emoji:"✍️", text:"Свой вариант"}  
+            ],  
+            bg: "linear-gradient(120deg,#b2f7ef,#fadcff 100%)", icon: "📔"  
+        },  
+        {  
+            label: "Что бы ты изменил в своём дне?",  
+            key: "change",  
+            type: "emoji+input",  
+            options: [  
+                {emoji:"⏲", text:"Меньше телефона"},  
+                {emoji:"💬", text:"Больше общаться с родными"},  
+                {emoji:"📝", text:"Лучше планировать"},  
+                {emoji:"🤝", text:"Больше помогать"},  
+                {emoji:"✍️", text:"Свой вариант"}  
+            ],  
+            bg: "linear-gradient(120deg,#fbed96,#abecd6 100%)", icon: "🔁"  
+        }  
+    ];  
+    // мешаем вопросы каждый день, первый — “кем стать”  
+    let first = base.splice(0,1);  
+    let rest = shuffle(base);  
+    return first.concat(rest);  
+}  
+
+const QUESTIONS_SET = {  
+    "Вера": [  
+        {  
+            label: "Как ты себя чувствуешь?",  
+            key: "feel",  
+            type: "emoji",  
+            options: [  
+                {emoji:"😊", text:"Весело!"},  
+                {emoji:"😴", text:"Сонно"},  
+                {emoji:"😕", text:"Грустно"}  
+            ],  
+            bg: "linear-gradient(120deg,#fffde7 50%, #f8bbd0 100%)",  
+            icon: "🌞"  
+        },  
+        {  
+            label: "Что тебе сегодня приснилось?",  
+            key: "dream",  
+            type: "emoji",  
+            options: [  
+                {emoji:"🦄", text:"Волшебство"},  
+                {emoji:"🐱", text:"Животные"},  
+                {emoji:"🙈", text:"Не помню"}  
+            ],  
+            bg: "linear-gradient(120deg,#e1f5fe 50%, #ede7f6 100%)",  
+            icon: "💤"  
+        },  
+        {  
+            label: "Что бы ты хотела сегодня сделать?",  
+            key: "goal",  
+            type: "emoji",  
+            options: [  
+                {emoji:"🎨", text:"Рисовать"},  
+                {emoji:"🤸", text:"Играть"},  
+                {emoji:"📚", text:"Слушать сказку"}  
+            ],  
+            bg: "linear-gradient(120deg,#fcebb6 50%, #f8bbd0 100%)",  
+            icon: "🌈"  
+        }  
+    ],  
+    "Матвей": [  
+        {  
+            label: "Как ты себя чувствуешь?",  
+            key: "feel",  
+            type: "emoji",  
+            options: [  
+                {emoji:"😃", text:"Классно"},  
+                {emoji:"🙂", text:"Хорошо"},  
+                {emoji:"😕", text:"Не очень"}  
+            ],  
+            bg: "linear-gradient(120deg,#e3f5fe 50%, #b3e5fc 100%)",  
+            icon: "☀️"  
+        },  
+        {  
+            label: "Что тебе снилось?",  
+            key: "dream",  
+            type: "emoji",  
+            options: [  
+                {emoji:"🚗", text:"Машины"},  
+                {emoji:"🦸", text:"Герои"},  
+                {emoji:"😴", text:"Не помню"}  
+            ],  
+            bg: "linear-gradient(120deg,#fff8e1 50%, #b3e5fc 100%)",  
+            icon: "💤"  
+        },  
+        {  
+            label: "Что бы ты хотел узнать сегодня?",  
+            key: "learn",  
+            type: "emoji",  
+            options: [  
+                {emoji:"🌍", text:"Про мир"},  
+                {emoji:"🦕", text:"Про животных"},  
+                {emoji:"🤔", text:"Что-то новое"}  
+            ],  
+            bg: "linear-gradient(120deg,#e1f5fe 50%, #ffe0b2 100%)",  
+            icon: "🔍"  
+        },  
+        {  
+            label: "Чем поможешь дома сегодня?",  
+            key: "help",  
+            type: "emoji",  
+            options: [  
+                {emoji:"🥣", text:"Накрою на стол"},  
+                {emoji:"🧹", text:"Уберу игрушки"},  
+                {emoji:"😊", text:"Помогу маме"}  
+            ],  
+            bg: "linear-gradient(120deg,#c8e6c9 50%, #b3e5fc 100%)",  
+            icon: "🌱"  
+        },  
+        {  
+            label: IS_SUMMER ?  
+                "Что ты сегодня будешь читать?" :  
+                "Что ты сегодня почитаешь?",  
+            key: "read",  
+            type: "emoji",  
+            options: [  
+                {emoji:"📚", text:"Книгу"},  
+                {emoji:"📖", text:"Библию"},  
+                {emoji:"📰", text:"Журнал"}  
+            ],  
+            bg: "linear-gradient(120deg,#fffde7 50%, #b3e5fc 100%)",  
+            icon: "📚"  
+        }  
+    ],  
+    "Никита": getNikitaQuestions()  
+};  
+
+// ФУНКЦИИ ДЛЯ РАБОТЫ  
+const app = document.getElementById('app');  
+let currentUser = null;  
+let answers = {};  
+let step = 0;  
+let QUESTIONS = [];  
 
 function reset() {
     currentUser = null;
@@ -291,12 +311,12 @@ function planForDay(answers, age) {
     } else {
         plan = [
             "Выполни свою главную задачу дня (или придумай новую)",
-            "Напиши пару мыслей или записей в дневник или Библию",
-            (answers.bible?.includes("Библию") ? "Каждый день читай Божье слово!" : "Прочитай сегодня хотя бы пару стихов из Библии"),
+            "Запиши мысли, планы или домашку в дневник/тетрадь",
+            (answers.bibleclose?.includes("Библию") || answers.read?.includes("Библию") ? "Читай Божье слово каждый день!" : "Прочитай сегодня хотя бы пару стихов из Библии"),
             (answers.habit ? "Сделай привычку дня: "+answers.habit : ""),
-            "Как можно меньше телефона — только полезное!"
+            "Минимизируй телефон — только для полезного!"
         ].filter(Boolean);
-        if (IS_SUMMER) plan.push("Летом пополнить багаж знаний и духовных открытий!");
+        if (IS_SUMMER) plan.push("Летом — новые книги, интересы, знания и духовные открытия!");
     }
     return plan;
 }
@@ -305,7 +325,7 @@ function buildTelegramText(username, answers, questionsList) {
     questionsList.forEach(q=>{
         lines.push(`${q.icon||""} ${q.label} ${answers[q.key]||""}`);
     });
-    lines.push(`\nОтвет отправлен из семейной анкеты фрагмент: https://github.com`);
+    lines.push(`\nОтвет отправлен из семейной анкеты на сайте!`);
     return lines.join('\n');
 }
 function telegramShareBtn(text) {
@@ -314,7 +334,19 @@ function telegramShareBtn(text) {
     btn.className = "tg-share";
     btn.onclick = () => {
         const url = 'https://t.me/share/url?url=&text=' + encodeURIComponent(text);
-        window.open(url, "_blank");
+        if(/Android|iPhone|iPad|Mobile/i.test(navigator.userAgent)){
+            window.open(url, "_blank");
+        } else {
+            window.open(url, "_blank");
+            setTimeout(()=>{
+                if(document.getElementById("tg-notify")) return;
+                let note = document.createElement("div");
+                note.className = 'tg-note';
+                note.id = "tg-notify";
+                note.textContent = "На ПК нельзя поделиться напрямую — открой сайт на телефоне, либо скопируй ответы и отправь родителям в Телеграм!";
+                btn.parentElement.appendChild(note);
+            }, 400);
+        }
     };
     return btn;
 }
@@ -349,7 +381,8 @@ function miniExitBtn() {
     btn.style.fontSize = "1.11rem";
     return btn;
 }
-// === Главная логика — визуализация ===
+
+// === ГЛАВНАЯ ВИЗУАЛИЗАЦИЯ ===
 function render() {
     app.className = "";
     app.innerHTML = "";
@@ -365,7 +398,9 @@ function render() {
             btn.textContent = u.name;
             btn.onclick = () => {
                 currentUser = u.name;
-                QUESTIONS = QUESTIONS_SET[currentUser] || [];
+                QUESTIONS = (currentUser === "Никита"
+                    ? getNikitaQuestions() // с перемешкой и "свой вариант"
+                    : QUESTIONS_SET[currentUser]) || [];
                 render();
             };
             wrap.appendChild(btn);
@@ -384,19 +419,49 @@ function render() {
         `;
         const opts = document.createElement('div');
         opts.className = "options-row";
-        q.options.forEach(opt => {
+        let inputNode = null;
+        let inputValue = '';
+        let otherSelected = false;
+
+        q.options.forEach((opt, idx) => {
             const btn = document.createElement('button');
             btn.type = "button";
             btn.className = "option-emoji";
-            btn.innerHTML = `<span>${opt.emoji}</span><span style="font-size:1.08rem; margin-top:2px">${opt.text}</span>`;
+            btn.innerHTML = `<span>${opt.emoji}</span><span style="font-size:1.13rem; margin-top:2px">${opt.text}</span>`;
             btn.onclick = () => {
-                answers[q.key] = `${opt.emoji} ${opt.text}`;
-                step++;
-                render();
+                if (q.type && q.type.includes("input") && (opt.text === "Свой вариант" || idx === q.options.length-1)) {
+                    if (!inputNode) {
+                        otherSelected = true;
+                        inputNode = document.createElement('input');
+                        inputNode.type = "text";
+                        inputNode.className = "opt-other-input";
+                        inputNode.placeholder = "Напиши свой ответ";
+                        inputNode.oninput = e => { inputValue = e.target.value; };
+                        opts.appendChild(inputNode);
+
+                        let okBtn = document.createElement('button');
+                        okBtn.type = "button";
+                        okBtn.textContent = "OK";
+                        okBtn.className = "option-emoji";
+                        okBtn.onclick = () => {
+                            if(inputValue.trim().length < 1) {inputNode.style.borderColor="red";return;}
+                            answers[q.key] = inputValue.trim();
+                            step++;
+                            render();
+                        };
+                        opts.appendChild(okBtn);
+                        inputNode.focus();
+                    }
+                } else {
+                    answers[q.key] = `${opt.emoji} ${opt.text}`;
+                    step++;
+                    render();
+                }
             };
             opts.appendChild(btn);
         });
         block.appendChild(opts);
+
         app.appendChild(Object.assign(document.createElement("h2"), {textContent: currentUser}));
         app.appendChild(block);
         app.appendChild(miniExitBtn());
@@ -417,6 +482,26 @@ function render() {
             plan.map(item => `<li>${item}</li>`).join("") + "</ul>";
         app.appendChild(planDiv);
 
+        // Мотивационные рекомендации для Никиты
+        if(currentUser === "Никита") {
+            let recDiv = document.createElement("div");
+            recDiv.style.background="#fff8e1";
+            recDiv.style.borderRadius="12px";
+            recDiv.style.margin="14px 0 10px 0";
+            recDiv.style.padding="18px 14px";
+            recDiv.style.color="#d84315";
+            recDiv.style.fontSize="1.14rem";
+            recDiv.style.fontWeight="bold";
+            recDiv.innerHTML = `<b>Мотивация на день, Никита:</b><ul style='margin:11px 0 0 0; padding-left:24px;text-align:left'>
+            <li>Записывай домашние задания (и мысли) в дневник или тетрадь сразу после уроков.</li>
+            <li>Поставь себе цель помочь дома хотя бы 1 раз сегодня.</li>
+            <li>Меньше телефона — больше общения и новых реальных достижений.</li>
+            <li>Вечером расскажи родителям, что ты сегодня узнал, сделал или чему научился.</li>
+            <li>Каждый день открывай Библию — хотя бы одну главу.</li>
+            </ul>`;
+            app.appendChild(recDiv);
+        }
+
         let results = document.createElement("div");
         results.style.margin = "18px auto 5px auto";
         results.style.background = "#fefefe";
@@ -429,6 +514,7 @@ function render() {
         // Кнопка Поделиться в Телеграм
         let shareText = buildTelegramText(user, answers, QUESTIONS);
         app.appendChild(telegramShareBtn(shareText));
+
         // История и повтор
         app.appendChild(history(user));
         let again = Object.assign(document.createElement('button'), {
