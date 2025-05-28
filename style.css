@@ -4,35 +4,33 @@ body {
     min-height: 100vh;
 }
 #app {
-    max-width: 455px;
-    margin: 38px auto 20px auto;
+    max-width: 480px;
+    margin: 16px auto;
     border-radius: 22px;
-    box-shadow: 0 6px 36px #ffcfa3b0;
-    padding: 23px 9px 28px 9px;
+    box-shadow: 0 6px 38px #ffcfa3b0;
+    padding: 28px 7px;
     background: #fff9ed;
 }
 
 .user-btn {
-    font-size: 2.1rem;
-    padding: 18px 0;
-    width: 145px;
-    border-radius: 33px;
+    font-size: 2.3rem;
+    padding: 20px 0;
+    width: 160px;
+    border-radius: 35px;
     border: none;
-    margin: 10px;
+    margin: 12px;
     cursor: pointer;
     font-weight: bold;
     box-shadow: 0 3px 12px #ffecb36b;
-    transition: filter 0.14s;
 }
-.user-btn:active { filter: brightness(0.95); }
 
 .question-block {
-    border-radius: 25px;
-    padding: 22px 0 22px 0;
-    margin-bottom: 18px;
+    border-radius: 27px;
+    padding: 34px 0 34px 0;
+    margin-bottom: 28px;
     text-align: center;
     background: #fffbe4;
-    min-height: 230px;
+    min-height: 240px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,33 +38,31 @@ body {
 }
 
 .question-icon {
-    font-size: 3.5rem;
-    margin-bottom: 7px;
-    user-select: none;
+    font-size: 4.2rem;
+    margin-bottom: 12px;
 }
 .question-label {
-    font-size: 1.63rem;
-    margin-bottom: 19px;
+    font-size: 2rem;
+    margin-bottom: 25px;
 }
 .options-row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 14px;
-    margin-top: 6px;
+    gap: 18px;
+    margin-top: 12px;
 }
 .option-emoji {
-    font-size: 2.48rem;
+    font-size: 3.1rem;
     background: #fffecb;
-    padding: 16px 6px 9px 6px;
-    border-radius: 23px;
-    border: 2px solid #ffd180;
+    padding: 22px 14px 14px 14px;
+    border-radius: 28px;
+    border: 3px solid #ffd180;
     cursor: pointer;
-    min-width: 120px;
-    min-height: 60px;
-    margin-bottom: 7px;
+    min-width: 136px;
+    min-height: 70px;
+    margin-bottom: 10px;
     transition: box-shadow 0.13s, background 0.13s, border 0.13s;
-    outline: none;
     font-family: inherit;
     font-weight: bold;
     display: flex; flex-direction: column; align-items: center;
@@ -75,65 +71,76 @@ body {
 .option-emoji.selected,
 .option-emoji:active {
     background: #ffd180;
-    border: 2.4px solid #ffab91;
+    border: 3px solid #ffab91;
+}
+.opt-other-input {
+    margin-top: 12px;
+    font-size: 1.32rem;
+    padding: 12px 16px;
+    width: 95%;
+    border-radius: 13px;
+    border: 1.3px solid #ffc107;
+    outline: none;
 }
 .motivation {
     text-align: center;
     background: #edeae6;
     color: #43a047;
-    padding: 13px 17px;
-    border-radius: 15px;
-    margin: 22px 0 21px 0;
-    font-size: 1.19rem;
+    padding: 17px 20px;
+    border-radius: 16px;
+    margin: 24px 0 23px 0;
+    font-size: 1.26rem;
     font-weight: bold;
-    letter-spacing: 0.01em;
 }
 
 .plan {
     background: #fff9c4;
-    padding: 10px 15px 9px 16px;
-    border-radius: 14px;
-    margin: 17px 0 9px 0;
-    font-size: 1.11rem;
+    padding: 17px 16px 10px 17px;
+    border-radius: 16px;
+    margin: 21px 0 15px 0;
+    font-size: 1.20rem;
     text-align: center;
 }
 .history-entry {
     background: #f1f8e9;
-    padding: 11px 13px 7px 13px;
-    border-radius: 19px;
-    margin-bottom: 13px;
-    font-size: 1.04rem;
-    letter-spacing: 0.01em;
+    padding: 13px 20px 10px 20px;
+    border-radius: 22px;
+    margin-bottom: 15px;
+    font-size: 1.13rem;
 }
 
-h2, h3 { text-align: center }
-button, .user-btn { user-select: none; outline: none;}
-/* Цвета по ребенку */
+.tg-share {
+    background: #19b6ee;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    font-size: 1.28rem;
+    border-radius: 26px;
+    margin: 15px auto;
+    display: block;
+    width: 94%;
+    max-width: 340px;
+    box-shadow: 0 3px 16px #b2edf7c7;
+}
+.tg-note {
+    text-align: center;
+    font-size: 1.05em;
+    color: #888;
+    margin-top: 9px;
+}
+
 #app.vera .user-btn, #app.vera .option-emoji { background: #f8bbd0; }
 #app.vera .question-block { background: #fff1fa;}
 #app.matvey .user-btn, #app.matvey .option-emoji { background: #b3e5fc; }
 #app.matvey .question-block { background: #e3f5fe;}
 #app.nikita .user-btn, #app.nikita .option-emoji { background: #ffcdd2; }
 #app.nikita .question-block { background: #fde8e8;}
-/* Спец-стиль кнопки Телеграм */
-.tg-share {
-    background: #19b6ee;
-    color: #fff;
-    border: none;
-    font-weight: bold;
-    font-size: 1.13rem;
-    border-radius: 23px;
-    margin: 13px auto;
-    display: block;
-    width: 92%;
-    max-width: 350px;
-    box-shadow: 0 3px 16px #b2edf7c7;
-    transition: background 0.13s;
-}
-.tg-share:active { background: #027ba9; }
 
-@media (max-width: 510px) {
-    #app { border-radius: 0; }
-    .question-block { min-height: 120px;}
-    .option-emoji { min-width: 80px; font-size: 2rem;}
+@media (max-width: 600px) {
+    #app { border-radius: 0; padding: 4vw;}
+    .question-block { min-height: 0; padding: 17vw 2vw 15vw;}
+    .option-emoji { min-width: 44vw; font-size: 2.5rem;}
+    .question-label {font-size: 7vw;}
+    .history-entry {font-size: 1.03rem;}
+    .user-btn {width:80vw}
 }
