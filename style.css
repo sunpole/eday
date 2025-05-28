@@ -4,65 +4,64 @@ body {
     min-height: 100vh;
 }
 #app {
-    max-width: 480px;
-    margin: 16px auto;
-    border-radius: 22px;
-    box-shadow: 0 6px 38px #ffcfa3b0;
-    padding: 28px 7px;
+    max-width: 420px;
+    margin: 8px auto;
+    border-radius: 19px;
+    box-shadow: 0 4px 16px #ffcfa3b0;
+    padding: 11px 3px 14px 3px;
     background: #fff9ed;
 }
 
 .user-btn {
-    font-size: 2.3rem;
-    padding: 20px 0;
-    width: 160px;
-    border-radius: 35px;
+    font-size: 1.35rem;
+    padding: 13px 0;
+    width: 92vw;
+    max-width: 180px;
+    border-radius: 27px;
     border: none;
-    margin: 12px;
+    margin: 8px 3px;
     cursor: pointer;
     font-weight: bold;
-    box-shadow: 0 3px 12px #ffecb36b;
+    box-shadow: 0 2px 7px #ffe08248;
 }
 
 .question-block {
-    border-radius: 27px;
-    padding: 34px 0 34px 0;
-    margin-bottom: 28px;
+    border-radius: 19px;
+    padding: 18px 0 14px 0;
+    margin-bottom: 10px;
     text-align: center;
     background: #fffbe4;
-    min-height: 240px;
+    min-height: 106px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative;
 }
 
 .question-icon {
-    font-size: 4.2rem;
-    margin-bottom: 12px;
+    font-size: 2.2rem;
+    margin-bottom: 8px;
 }
 .question-label {
-    font-size: 2rem;
-    margin-bottom: 25px;
+    font-size: 1.19rem;
+    margin-bottom: 9px;
 }
 .options-row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 18px;
-    margin-top: 12px;
+    gap: 7px;
+    margin-top: 4px;
 }
 .option-emoji {
-    font-size: 3.1rem;
+    font-size: 1.4rem;
     background: #fffecb;
-    padding: 22px 14px 14px 14px;
-    border-radius: 28px;
-    border: 3px solid #ffd180;
+    padding: 8px 4px 5px 4px;
+    border-radius: 15px;
+    border: 2px solid #ffd180;
     cursor: pointer;
-    min-width: 136px;
-    min-height: 70px;
-    margin-bottom: 10px;
-    transition: box-shadow 0.13s, background 0.13s, border 0.13s;
+    min-width: 70px;
+    min-height: 30px;
+    margin-bottom: 4px;
     font-family: inherit;
     font-weight: bold;
     display: flex; flex-direction: column; align-items: center;
@@ -71,42 +70,42 @@ body {
 .option-emoji.selected,
 .option-emoji:active {
     background: #ffd180;
-    border: 3px solid #ffab91;
+    border: 2px solid #ffab91;
 }
 .opt-other-input {
-    margin-top: 12px;
-    font-size: 1.32rem;
-    padding: 12px 16px;
-    width: 95%;
-    border-radius: 13px;
-    border: 1.3px solid #ffc107;
+    margin-top: 6px;
+    font-size: 1.01rem;
+    padding: 7px 7px;
+    width: 87%;
+    border-radius: 7px;
+    border: 1px solid #ffc107;
     outline: none;
 }
 .motivation {
     text-align: center;
     background: #edeae6;
     color: #43a047;
-    padding: 17px 20px;
-    border-radius: 16px;
-    margin: 24px 0 23px 0;
-    font-size: 1.26rem;
+    padding: 7px 2vw;
+    border-radius: 10px;
+    margin: 12px 0 10px 0;
+    font-size: 1.09rem;
     font-weight: bold;
 }
 
 .plan {
     background: #fff9c4;
-    padding: 17px 16px 10px 17px;
-    border-radius: 16px;
-    margin: 21px 0 15px 0;
-    font-size: 1.20rem;
+    padding: 6px 2vw 4px 2vw;
+    border-radius: 12px;
+    margin: 8px 0 5px 0;
+    font-size: 1.06rem;
     text-align: center;
 }
 .history-entry {
     background: #f1f8e9;
-    padding: 13px 20px 10px 20px;
-    border-radius: 22px;
-    margin-bottom: 15px;
-    font-size: 1.13rem;
+    padding: 7px 2vw 4px 2vw;
+    border-radius: 14px;
+    margin-bottom: 7px;
+    font-size: .97rem;
 }
 
 .tg-share {
@@ -114,19 +113,19 @@ body {
     color: #fff;
     border: none;
     font-weight: bold;
-    font-size: 1.28rem;
-    border-radius: 26px;
-    margin: 15px auto;
+    font-size: 1.02rem;
+    border-radius: 20px;
+    margin: 9px auto 3px auto;
     display: block;
-    width: 94%;
-    max-width: 340px;
-    box-shadow: 0 3px 16px #b2edf7c7;
+    width: 95vw;
+    max-width: 240px;
+    box-shadow: 0 2px 9px #b2edf7b0;
 }
 .tg-note {
     text-align: center;
-    font-size: 1.05em;
+    font-size: 0.94em;
     color: #888;
-    margin-top: 9px;
+    margin-top: 5px;
 }
 
 #app.vera .user-btn, #app.vera .option-emoji { background: #f8bbd0; }
@@ -136,11 +135,13 @@ body {
 #app.nikita .user-btn, #app.nikita .option-emoji { background: #ffcdd2; }
 #app.nikita .question-block { background: #fde8e8;}
 
-@media (max-width: 600px) {
-    #app { border-radius: 0; padding: 4vw;}
-    .question-block { min-height: 0; padding: 17vw 2vw 15vw;}
-    .option-emoji { min-width: 44vw; font-size: 2.5rem;}
-    .question-label {font-size: 7vw;}
-    .history-entry {font-size: 1.03rem;}
-    .user-btn {width:80vw}
+h2, h3 {text-align:center;margin:0 0 5px 0;}
+button, .user-btn { user-select: none; outline: none; }
+@media (max-width: 450px) {
+    #app {border-radius:0;max-width:99vw;}
+    .option-emoji {
+        min-width:48vw;
+        font-size:1.18rem
+    }
+    .question-label {font-size: 4vw;}
 }
